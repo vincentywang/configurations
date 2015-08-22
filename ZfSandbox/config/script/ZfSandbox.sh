@@ -12,6 +12,10 @@ APACHE_IS_INSTALLED=$?
 php -v > /dev/null 2>&1
 PHP_IS_INSTALLED=$?
 
+# Test if mysql is installed
+mysql --version > /dev/null 2>&1
+MYSQL_IS_INSTALLED=$?
+
 # Test if unzip is installed
 unzip -v > /dev/null 2>&1
 UNZIP_IS_INSTALLED=$?
@@ -38,6 +42,15 @@ if [[ $PHP_IS_INSTALLED -ne 0 ]]; then
   php5enmod mysql
 else
   echo "php5 checked"
+fi
+
+if [[ $MYSQL_IS_INSTALLED -ne 0 ]]; then
+  echo "install mysql"
+  debconf-set-selections <<< 'mysql-server mysql-server/root_password password 123'
+  debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password 123'
+  apt-get -y install mysql-server-5.6 > /dev/null
+else
+  echo "mysql checked"
 fi
 
 if [[ $UNZIP_IS_INSTALLED -ne 0 ]]; then
