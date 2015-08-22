@@ -1,2 +1,2 @@
 # vagrant_config
-my vagrant script
+my vagrant script for local development environment
