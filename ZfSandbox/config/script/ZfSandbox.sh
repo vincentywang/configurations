@@ -56,19 +56,3 @@ fi
 
 
 # config apache2
-
-if [ ! -f /etc/apache2/mods-enabled/rewrite.load ]; then
-  a2enmod rewrite
-fi
-
-if [ ! -f /etc/apache2/mods-enabled/ssl.load ]; then
-  a2enmod ssl
-fi
-
-if [ ! -f /etc/apache2/conf-enabled/synaptop.com.conf ]; then
-  cp /home/vagrant/c/apache/conf-available/synaptop.com.conf /etc/apache2/conf-available/
-  a2enconf synaptop.com
-fi
-
-cp /home/vagrant/c/apache/sites-available/www.synaptop.dev.conf /etc/apache2/sites-available/
-a2ensite www.synaptop.dev
