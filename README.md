@@ -1,2 +1,2 @@
-# vagrant_config
-my vagrant script for local development environment
+# config collection
+list collected configuration files
