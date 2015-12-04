@@ -4,4 +4,7 @@
   // sublime 2
   { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
   { "keys": ["ctrl+e"], "command":"move_to", "args":{"to":"eol"}}
+  { "keys": ["super+shift+["], "command": "jump_back" },
+	{ "keys": ["super+shift+]"], "command": "jump_forward" },
+	{ "keys": ["super+alt+down"], "command": "goto_definition"}
 ]
