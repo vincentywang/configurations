@@ -1,4 +1,7 @@
 [
+  // sublime 3
   { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
-	{ "keys": ["ctrl+e"], "command":"move_to", "args":{"to":"eol"}}
+  // sublime 2
+  { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+  { "keys": ["ctrl+e"], "command":"move_to", "args":{"to":"eol"}}
 ]
