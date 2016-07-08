@@ -76,13 +76,15 @@ sudo mv /usr/local/jdk/jdk1.7.0_79/ /usr/local/jdk/jdk7/
 sudo tar -xf /home/vagrant/config/tomcat/tomcat_7/apache-tomcat-7.0.70.tar -C /opt/
 
 sudo mv /opt/apache-tomcat-7.0.70 /opt/tomcat7
+sudo chown -R vagrant:root /opt/tomcat7
+/opt/tomcat7/bin/startup.sh
 
 
-sudo echo "export JAVA_HOME=/usr/local/jdk/jdk7" >> ~/.bashrc
-sudo echo "export JRE_HOME=/usr/local/jdk/jdk7/jre" >> ~/.bashrc
-sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> ~/.bashrc
-sudo echo "export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.ja" >> ~/.bashrc
-sudo echo "export TOMCAT_HOME=/opt/tomcat7" >> ~/.bashrc
+sudo echo "export JAVA_HOME=/usr/local/jdk/jdk7" >>/home/vagrant/.bashrc
+sudo echo "export JRE_HOME=/usr/local/jdk/jdk7/jre" >> /home/vagrant/.bashrc
+sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> /home/vagrant/.bashrc
+sudo echo "export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.ja" >> /home/vagrant/.bashrc
+sudo echo "export TOMCAT_HOME=/opt/tomcat7" >> /home/vagrant/.bashrc
 
 source ~/.bashrc
 
