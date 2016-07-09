@@ -123,8 +123,8 @@ source /home/vagrant/.profile
 sudo echo "TOMCAT_HOME=/opt/tomcat7" >> /home/vagrant/.profile
 source /home/vagrant/.profile
 
-alias starttomcat='/opt/tomcat7/bin/startup.sh'
-alias stoptomcat='/opt/tomcat7/bin/shutdown.sh'
+sudo echo "alias starttomcat='/opt/tomcat7/bin/startup.sh'" >> /home/vagrant/.profile
+sudo echo "alias stoptomcat='/opt/tomcat7/bin/shutdown.sh'" >> /home/vagrant/.profile
 source /home/vagrant/.profile
 
 echo "Updating apt-get list..."
