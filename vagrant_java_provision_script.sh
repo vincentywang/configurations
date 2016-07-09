@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "##################################################"
 echo "########### Configuring Java Sandbox #############" 
 echo "##################################################"
@@ -67,6 +69,37 @@ else
   echo "svn checked"
 fi
 
+
+# config tomcat 
+
+# echo "Cloning config folder..."
+# if [ -d /home/vagrant/c ]; then
+#   rm -Rf /home/vagrant/c
+# fi
+# cp -R /home/vagrant/config /home/vagrant/c
+
+
+# echo "copy jdk to usr/local/java"
+# if [ -d /home/vagrant/c ]; then
+#   rm -Rf /usr/local/java
+# fi
+# cp -R /home/vagrant/c/java /usr/local/java
+
+# echo "unzip jdk"
+# tar -xzvf /usr/local/java/java_7/jdk-7u79-linux-x64.tar.gz
+
+
+# echo "copy tomcat to usr/local/tomcat"
+# if [ -d /home/vagrant/c ]; then
+#   rm -Rf /usr/local/tomcat
+# fi
+# cp -R /home/vagrant/c/tomcat /usr/local/tomcat
+
+
+# echo "unzip tomcat"
+# tar -xzvf /usr/local/tomcat/tomcat_8/apache-tomcat-8.0.15.tar.gz
+# 
+
 sudo mkdir /usr/local/jdk
 
 sudo tar -xf /home/vagrant/config/jdk/jdk_7/jdk-7u79-linux-x64.tar -C /usr/local/jdk/
@@ -77,16 +110,24 @@ sudo tar -xf /home/vagrant/config/tomcat/tomcat_7/apache-tomcat-7.0.70.tar -C /o
 
 sudo mv /opt/apache-tomcat-7.0.70 /opt/tomcat7
 sudo chown -R vagrant:root /opt/tomcat7
-/opt/tomcat7/bin/startup.sh
 
 
-sudo echo "export JAVA_HOME=/usr/local/jdk/jdk7" >>/home/vagrant/.bashrc
-sudo echo "export JRE_HOME=/usr/local/jdk/jdk7/jre" >> /home/vagrant/.bashrc
-sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> /home/vagrant/.bashrc
-sudo echo "export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.ja" >> /home/vagrant/.bashrc
-sudo echo "export TOMCAT_HOME=/opt/tomcat7" >> /home/vagrant/.bashrc
+sudo echo "JAVA_HOME=/usr/local/jdk/jdk7" >>/home/vagrant/.profile
+source /home/vagrant/.profile
+sudo echo "JRE_HOME=/usr/local/jdk/jdk7/jre" >> /home/vagrant/.profile
+source /home/vagrant/.profile
+sudo echo "PATH=$JAVA_HOME/bin:$JRE_HOME:$PATH" >> /home/vagrant/.profile
+source /home/vagrant/.profile
+sudo echo "CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.ja" >> /home/vagrant/.profile
+source /home/vagrant/.profile
+sudo echo "TOMCAT_HOME=/opt/tomcat7" >> /home/vagrant/.profile
+source /home/vagrant/.profile
 
-source ~/.bashrc
+alias starttomcat='/opt/tomcat7/bin/startup.sh'
+alias stoptomcat='/opt/tomcat7/bin/shutdown.sh'
+source /home/vagrant/.profile
 
 echo "Updating apt-get list..."
-sudo apt-get update > /dev/null
+# sudo apt-get update > /dev/null
+
+
